@@ -1,0 +1,311 @@
+/**
+ * Copyright (c) 2017-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/* You can override the default Docusaurus variables here. */
+:root {
+  --ifm-color-primary: #3578e5;
+  --ifm-color-primary-dark: #1d68e1;
+  --ifm-color-primary-darker: #1b62d4;
+  --ifm-color-primary-darkest: #1751af;
+  --ifm-color-primary-light: #4e89e9;
+  --ifm-color-primary-lighter: #5a91eb;
+  --ifm-color-primary-lightest: #80aaef;
+  --ifm-color-secondary: #f0f8ff;
+  --ifm-navbar-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.07);
+  --ifm-card-background-color: #ffffff;
+  --ifm-card-border-radius: 8px;
+  --ifm-card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  --ifm-code-font-size: 95%;
+}
+
+.docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.1);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+
+html[data-theme='dark'] .docusaurus-highlight-code-line {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Navbar styling - clean and minimal with soft shadow */
+.navbar {
+  box-shadow: var(--ifm-navbar-shadow);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.navbar__brand {
+  font-weight: 600;
+}
+
+.navbar__title {
+  font-size: 1.2rem;
+  margin-left: 0.5rem;
+}
+
+.navbar__item {
+  font-weight: 500;
+}
+
+.navbar__link {
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.navbar__link:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Hero banner improvements */
+.hero-banner {
+  padding: 5rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, var(--ifm-color-secondary) 0%, #ffffff 100%);
+  border-radius: 0 0 2rem 2rem;
+  margin-bottom: 3rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+}
+
+.hero-banner h1,
+.hero-banner h2 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, #1b62d4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-banner .hero__subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  color: #374151;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}
+
+.hero__buttons {
+  margin-top: 2rem;
+}
+
+/* Updated button styling for better visual appeal */
+.read-button {
+  display: inline-block;
+  padding: 14px 32px;
+  background: linear-gradient(135deg, var(--ifm-color-primary) 0%, #1b62d4 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(53, 120, 229, 0.2), 0 2px 4px -1px rgba(53, 120, 229, 0.1);
+  border: none;
+  cursor: pointer;
+}
+
+.read-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(53, 120, 229, 0.3), 0 4px 6px -2px rgba(53, 120, 229, 0.1);
+  background: linear-gradient(135deg, var(--ifm-color-primary-dark) 0%, #1751af 100%);
+  color: white;
+}
+
+/* Module and chapter styling */
+.module-intro {
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+  margin-bottom: 2rem;
+}
+
+.chapter-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Features section styling */
+.features-section {
+  padding: 3rem 0;
+  margin-bottom: 3rem;
+}
+
+.feature-card {
+  background-color: var(--ifm-card-background-color);
+  border-radius: var(--ifm-card-border-radius);
+  padding: 2rem;
+  box-shadow: var(--ifm-card-shadow);
+  transition: all 0.3s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.feature-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: #1f2937;
+}
+
+.feature-description {
+  font-size: 0.95rem;
+  color: #4b5563;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Footer styling improvements */
+.footer {
+  background-color: #1f2937;
+  color: white;
+  padding: 3rem 0 1.5rem;
+}
+
+.footer__title {
+  color: white;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer__link-item {
+  color: #d1d5db;
+}
+
+.footer__link-item:hover {
+  color: white;
+}
+
+.footer__copyright {
+  color: #9ca3af;
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #374151;
+}
+
+/* Responsive design */
+@media (max-width: 996px) {
+  .hero-banner {
+    padding: 3rem 0;
+  }
+
+  .hero-banner h1,
+  .hero-banner h2 {
+    font-size: 2.5rem;
+  }
+
+  .hero-banner .hero__subtitle {
+    font-size: 1.25rem;
+  }
+
+  .features-section {
+    padding: 2rem 0;
+  }
+
+  .feature-card {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media (max-width: 576px) {
+  .hero-banner {
+    padding: 2rem 0;
+  }
+
+  .hero-banner h1,
+  .hero-banner h2 {
+    font-size: 2rem;
+  }
+
+  .hero-banner .hero__subtitle {
+    font-size: 1.1rem;
+  }
+
+  .read-button {
+    padding: 12px 24px;
+    font-size: 1.1rem;
+  }
+
+  .col--3 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .features-section .row {
+    flex-direction: column;
+  }
+
+  .feature-icon {
+    font-size: 2rem;
+  }
+
+  .feature-title {
+    font-size: 1.1rem;
+  }
+
+  .feature-description {
+    font-size: 0.9rem;
+  }
+
+  /* Adjust navbar for mobile */
+  .navbar__items {
+    flex-wrap: wrap;
+  }
+
+  .navbar-sidebar__brand {
+    padding: 0.5rem 1rem;
+  }
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 768px) {
+  .col--3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+
+  .hero-banner h1,
+  .hero-banner h2 {
+    font-size: 2.2rem;
+  }
+
+  .hero-banner .hero__subtitle {
+    font-size: 1.2rem;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 996px) {
+  .col--3 {
+    flex: 0 0 50%;
+    max-width: 50%;
+  }
+}
