@@ -37,7 +37,7 @@ const Chatbot = () => {
 
     try {
       // Send request to backend API
-      const response = await fetch('http://localhost:8000/query', {
+      const response = await fetch('https://madihaali-project.hf.space/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
