@@ -1,0 +1,147 @@
+openapi: 3.0.0
+info:
+  title: RAG Agent API
+  description: API for interacting with the RAG Agent for book content queries
+  version: 1.0.0
+servers:
+  - url: http://localhost:8000
+    description: Local development server
+
+paths:
+  /:
+    get:
+      summary: Health check endpoint
+      description: Returns the health status of the API
+      responses:
+        '200':
+          description: API is healthy
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+                  message:
+                    type: string
+                    example: "RAG Agent API is running"
+
+  /health:
+    get:
+      summary: Detailed health check
+      description: Returns detailed health information about the API and RAG agent
+      responses:
+        '200':
+          description: Health check successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: "healthy"
+                  timestamp:
+                    type: string
+                    format: date-time
+                    example: "2026-01-03T10:30:00Z"
+                  rag_agent_initialized:
+                    type: boolean
+                    example: true
+
+  /query:
+    post:
+      summary: Process a query with the RAG agent
+      description: Sends a user query to the RAG agent and returns the response
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+      responses:
+        '200':
+          description: Query processed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    QueryRequest:
+      type: object
+      required:
+        - query
+      properties:
+        query:
+          type: string
+          description: The user's question or query about book content
+          example: "What is the main topic of this book?"
+        session_id:
+          type: string
+          description: Optional session ID to maintain conversation context
+          example: "session_20260103_103000"
+
+    QueryResponse:
+      type: object
+      required:
+        - answer
+        - sources
+        - confidence
+        - session_id
+        - timestamp
+      properties:
+        answer:
+          type: string
+          description: The agent's response to the query
+          example: "This book is about Physical AI and Humanoid Robotics..."
+        sources:
+          type: array
+          items:
+            type: string
+          description: List of sources used to generate the response
+          example: []
+        confidence:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+          description: Confidence score for the response
+          example: 0.8
+        session_id:
+          type: string
+          description: Session ID used for this query
+          example: "session_20260103_103000"
+        timestamp:
+          type: string
+          format: date-time
+          description: ISO 8601 timestamp of the response
+          example: "2026-01-03T10:30:00.123456"
+
+    ErrorResponse:
+      type: object
+      required:
+        - error
+      properties:
+        error:
+          type: string
+          description: Brief description of the error
+          example: "Query cannot be empty"
+        detail:
+          type: string
+          description: Additional details about the error (optional)
+          example: "The query field is required and cannot be empty"
